@@ -1,8 +1,8 @@
 const fetchRequest = (
 	url,
 	method = "GET",
-	format = "application/json",
 	data = null,
+	format = "application/json",
 ) => {
 	const params = {
 		method: method,
@@ -12,6 +12,7 @@ const fetchRequest = (
 	};
 
 	if (data) params.body = data;
+	console.log(params, data);
 
 	return fetch(url, params).then((resp) => resp.json());
 };
