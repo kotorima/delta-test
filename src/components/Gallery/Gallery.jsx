@@ -8,6 +8,7 @@ import GalleryCard from "./GalleryCard";
 const Gallery = ({ images, link }) => {
 	const [open, setOpen] = useState(false);
 	const [content, setContent] = useState(<></>);
+	const prompt = "Write a few sentences about the photo.";
 
 	const handleOpen = (id) =>
 		fetchRequest(`${link}/${id}`)
@@ -23,7 +24,12 @@ const Gallery = ({ images, link }) => {
 		const element = (
 			<>
 				<img src={url} alt={id} />
-				<CommentsBlock comments={comments} postId={id} link={link} />
+				<CommentsBlock
+					comments={comments}
+					postId={id}
+					link={link}
+					prompt={prompt}
+				/>
 			</>
 		);
 		return setContent(element);

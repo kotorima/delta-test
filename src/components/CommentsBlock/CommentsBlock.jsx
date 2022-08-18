@@ -3,13 +3,15 @@ import PropTypes from "prop-types";
 import { TextField, Button } from "@mui/material";
 import fetchRequest from "../../helpers/fetchRequest";
 
-const CommentsBlock = ({ comments, postId, link }) => {
+const CommentsBlock = ({ comments, postId, link, prompt }) => {
 	const [error, setError] = useState(false);
 	const [notice, setNotice] = useState("");
 	const [message, setMessage] = useState("");
+	const date = new Date().toISOString();
+	console.log(date);
 
 	const sendComment = (event) => {
-		const params = { comment: message };
+		const params = { text: message, id: postId, date: date };
 
 		fetchRequest(`${link}/${postId}/comments`, "POST", JSON.stringify(params))
 			.then(({ errors, ...data }) => {
@@ -31,7 +33,7 @@ const CommentsBlock = ({ comments, postId, link }) => {
 				<TextField
 					multiline
 					rows={4}
-					helperText={error ? notice : "Write a few sentences about the photo."}
+					helperText={error ? notice : prompt}
 					placeholder='Comment'
 					variant='standard'
 					required
@@ -47,10 +49,17 @@ const CommentsBlock = ({ comments, postId, link }) => {
 	);
 };
 
+CommentsBlock.defaultProps = {
+	comments: [],
+	link: "",
+	prompt: "",
+};
+
 CommentsBlock.propTypes = {
 	comments: PropTypes.array,
 	postId: PropTypes.number,
 	link: PropTypes.string,
+	prompt: PropTypes.string,
 };
 
 export default CommentsBlock;
