@@ -3,14 +3,12 @@ import Layout from "./routing/Layout";
 import Navigation from "./routing/Navigation";
 import "./App.css";
 
-function App() {
-	return (
-		<div className='App'>
-			<Layout>
-				<Navigation />
-			</Layout>
-		</div>
-	);
-}
+const App = () => (
+	<div className='App'>
+		<Layout>
+			<Navigation />
+		</Layout>
+	</div>
+);
 
 export default App;

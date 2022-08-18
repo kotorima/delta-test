@@ -1,9 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Layout({ children }) {
-	return <div>{children}</div>;
-}
+const Layout = ({ children }) => <div>{children}</div>;
 
 Layout.defaultProps = {
 	children: [],

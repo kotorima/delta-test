@@ -5,13 +5,12 @@ const routes = [
 	{
 		path: "/",
 		id: 0,
-		index: true,
-		element: <MainPage link='/' title='Delta' />,
+		element: <MainPage link='/' title='Main Page' />,
 	},
 	{
 		path: "*",
 		id: 1,
-		element: <Redirect link='/' title='Delta' />,
+		element: <Redirect link='/' title='Main Page' />,
 	},
 ];
 
