@@ -5,7 +5,7 @@ import fetchRequest from "../../helpers/fetchRequest";
 
 const CommentsBlock = ({ comments, postId, link, prompt }) => {
 	const [error, setError] = useState(false);
-	const [notice, setNotice] = useState("");
+	const [notice, setNotice] = useState(prompt);
 	const [message, setMessage] = useState("");
 	const date = new Date().toISOString();
 	console.log(date);
@@ -13,12 +13,11 @@ const CommentsBlock = ({ comments, postId, link, prompt }) => {
 	const sendComment = (event) => {
 		const params = { text: message, id: postId, date: date };
 
-		fetchRequest(`${link}/${postId}/comments`, "POST", JSON.stringify(params))
+		fetchRequest(`${link}/comments`, "POST", JSON.stringify(params))
 			.then(({ errors, ...data }) => {
 				if (errors) {
 					setError(true);
-					setNotice(errors);
-					console.log(errors);
+					setNotice(errors.comment || errors);
 				}
 				return data;
 			})
@@ -45,6 +44,18 @@ const CommentsBlock = ({ comments, postId, link, prompt }) => {
 					Save
 				</Button>
 			</form>
+			{comments.length > 0 ? (
+				<div>
+					{comments.map(({ id, date, text }) => (
+						<div key={id}>
+							<div>{date}</div>
+							<div>{text}</div>
+						</div>
+					))}
+				</div>
+			) : (
+				<></>
+			)}
 		</div>
 	);
 };

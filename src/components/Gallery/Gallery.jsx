@@ -10,24 +10,27 @@ const Gallery = ({ images, link }) => {
 	const [content, setContent] = useState(<></>);
 	const prompt = "Write a few sentences about the photo.";
 
-	const handleOpen = (id) =>
-		fetchRequest(`${link}/${id}`)
+	const handleOpen = (id) => {
+		const url = `${link}/${id}`;
+
+		return fetchRequest(url)
 			.then((data) => {
-				renderPopupContent(data);
+				renderPopupContent(data, url);
 				return setOpen(true);
 			})
 			.catch((error) => console.log(error));
+	};
 
 	const handleClose = () => setOpen(false);
 
-	const renderPopupContent = ({ url, id, comments }) => {
+	const renderPopupContent = ({ url: urlImage, id, comments }, url) => {
 		const element = (
 			<>
-				<img src={url} alt={id} />
+				<img src={urlImage} alt={id} />
 				<CommentsBlock
 					comments={comments}
 					postId={id}
-					link={link}
+					link={url}
 					prompt={prompt}
 				/>
 			</>
