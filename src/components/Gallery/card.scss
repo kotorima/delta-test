@@ -1,0 +1,28 @@
+.card {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	padding: 0;
+}
+
+.imageWrapper {
+	width: 100%;
+	position: relative;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.image {
+	width: 100%;
+	object-fit: cover;
+}
+
+.descpiption {
+	// font-family: $interRegular;
+	font-size: 14px;
+	line-height: 20px;
+
+	/* gray/900 */
+
+	color: #111827;
+}

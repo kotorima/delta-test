@@ -4,10 +4,12 @@ import Popup from "../Popup";
 import CommentsBlock from "../CommentsBlock/CommentsBlock";
 import fetchRequest from "../../helpers/fetchRequest";
 import GalleryCard from "./GalleryCard";
+import styles from "./styles.module.scss";
 
 const Gallery = ({ images, link }) => {
 	const [open, setOpen] = useState(false);
 	const [content, setContent] = useState(<></>);
+	const { gallery } = styles;
 	const prompt = "Write a few sentences about the photo.";
 
 	const handleOpen = (id) => {
@@ -39,7 +41,7 @@ const Gallery = ({ images, link }) => {
 	};
 
 	return (
-		<div>
+		<div className={gallery}>
 			{images.map(({ id, url }) => (
 				<GalleryCard key={id} id={id} url={url} onOpen={() => handleOpen(id)} />
 			))}

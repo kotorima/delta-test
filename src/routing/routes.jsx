@@ -1,4 +1,4 @@
-import MainPage from "../pages/main-page";
+import MainPage from "../pages/main";
 import Redirect from "./Redirect";
 
 const routes = [

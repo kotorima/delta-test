@@ -44,5 +44,5 @@ $mac2000: "screen and (min-width: " + nth($mac, 1) + ")"; // 2000
 @include media(nth($tabletPoints, 2), 17.5, nth($desktopPoints, 3), 880px);
 
 @each $element in $desktopPoints {
-	@include media($element, 16, nth($desktopPoints, 3), $containerWidth[i]);
+	@include media($element, 16, nth($desktopPoints, 3), $containerWidth);
 }

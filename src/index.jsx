@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import App from "./App";
 import store from "./store/generateState";
 import reportWebVitals from "./reportWebVitals";
-import "./styles/globals.scss";
+// import "./styles/globals.scss";
 
 const root = createRoot(document.getElementById("root"));
 const devApiUrl = "https://boiling-refuge-66454.herokuapp.com";

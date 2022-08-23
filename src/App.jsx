@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 import Layout from "./routing/Layout";
 import Navigation from "./routing/Navigation";
 import { addApi } from "./store/slices/apiUrl";
+import "./App.scss";
+import "./styles/globals.scss";
 
 const App = ({ apiUrl }) => {
 	const dispatch = useDispatch();
